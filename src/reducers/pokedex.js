@@ -4,8 +4,8 @@ import {
     FETCH_POKEMON_ERROR,
     FETCH_POKEMON_DETAILS,
     FETCH_POKEMON_DETAILS_SUCCESS,
-    // FETCH_POKEMON_SPECIES,
-    // FETCH_POKEMON_SPECIES_SUCCESS,
+    FETCH_POKEMON_SPECIES,
+    FETCH_POKEMON_SPECIES_SUCCESS,
 
 } from '../actions/actionTypes';
 
@@ -82,6 +82,39 @@ export default function(state = initialState, action){
                         ...state.pokemon[action.payload.name],
                         details: {
                             ...state.pokemon[action.payload.name].details,
+                            loading: false,
+                            info: action.payload.info
+                        },
+                        species: {
+                            loading: false,
+                            url: action.payload.info.species.url
+                        }
+                    }
+                }
+            }
+        case FETCH_POKEMON_SPECIES:
+            return {
+                ...state,
+                pokemon: {
+                    ...state.pokemon,
+                    [action.payload.name]: {
+                        ...state.pokemon[action.payload.name],
+                        species: {
+                            ...state.pokemon[action.payload.name].species,
+                            loading: true,
+                        }
+                    }
+                }
+            }
+        case FETCH_POKEMON_SPECIES_SUCCESS:
+            return {
+                ...state,
+                pokemon: {
+                    ...state.pokemon,
+                    [action.payload.name]: {
+                        ...state.pokemon[action.payload.name],
+                        species: {
+                            ...state.pokemon[action.payload.name].species,
                             loading: false,
                             info: action.payload.info
                         }

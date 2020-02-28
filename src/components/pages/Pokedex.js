@@ -71,13 +71,13 @@ function Pokedex() {
     })
 
     //event handlers
-    function handleSearchChange(e){
+    const handleSearchChange = (e) => {
         setQuery(e.target.value);
     }
-    function handleComboChange(e){
+    const handleComboChange = (e) => {
         setPokedex(e.target.value);
     }
-    const handleScroll = (e)=> {
+    const handleScroll = (e) => {
         const el = e.target.documentElement;
         const bottom = el.scrollHeight - el.scrollTop === el.clientHeight;
         if (bottom) {

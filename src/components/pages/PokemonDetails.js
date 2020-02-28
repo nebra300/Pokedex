@@ -6,7 +6,7 @@ import {FETCH_POKEMON_DETAILS, FETCH_POKEMON_DETAILS_SUCCESS} from '../../action
 import PokemonThumbnail from '../partialViews/PokemonThumbnail';
 import PokemonTypes from '../partialViews/PokemonTypes'
 import PokemonAbilities from '../partialViews/PokemonAbilities';
-//import PokemonSpecies from '../partialViews/PokemonSpecies';
+import PokemonSpecies from '../partialViews/PokemonSpecies';
 
 const fetchPokemonDetails = (pokemon, dispatch)=>{
     if(!pokemon.details.info && pokemon.details.loading===false){
@@ -45,7 +45,7 @@ function PokemonDetails(props) {
                         <PokemonAbilities pokemonAbilities={pokemon.details.info.abilities} />
                     </div>
                     <div className="col">
-                        {/* <PokemonSpecies name={pokemon.name}/> */}
+                        <PokemonSpecies pokemonName={pokemon.name}/>
                     </div>
                 </div>
             </div>
