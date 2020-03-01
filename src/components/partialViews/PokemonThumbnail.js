@@ -10,8 +10,6 @@ function PokemonThumbnail(props) {
     const pokemon = useSelector(state => state.pokedex.pokemon[props.pokemonName])
     const dispatch = useDispatch();
 
-    console.log(pokemon);
-
     useEffect(() => {
         fetchPokemonDetails(pokemon, dispatch);
     }, [pokemon, dispatch]);
@@ -31,7 +29,7 @@ function PokemonThumbnail(props) {
                 {pokemon.details.info ? 
                     <img alt={altImg} className="rounded-circle" style={style.imgStyle} src={pokemon.details.info.sprites.front_default} /> 
                 : null}
-                <h3>{pokemon.name}</h3>
+                <h2>{pokemon.name}</h2>
             </div>
         )
     }

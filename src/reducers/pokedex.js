@@ -23,6 +23,10 @@ const arrayToObject = (array, keyField) =>
      return obj
    }, {})
 
+const capitalize = (s) => {
+    if (typeof s !== 'string') return ''
+    return s.charAt(0).toUpperCase() + s.slice(1)
+}
 
 export default function(state = initialState, action){
     switch(action.type){
@@ -39,7 +43,7 @@ export default function(state = initialState, action){
                     ...state.pokemon,
                     ...arrayToObject(action.payload.results.map(poke=>{
                         return {
-                            name: poke.name,
+                            name: capitalize(poke.name),
                             details: {
                                 loading: false,
                                 url: poke.url
@@ -50,7 +54,7 @@ export default function(state = initialState, action){
                 },
                 pokemonKeys: [
                     ...state.pokemonKeys,
-                    ...action.payload.results.map(poke=>poke.name)
+                    ...action.payload.results.map(poke=>capitalize(poke.name))
                 ]
             };
         case FETCH_POKEMON_ERROR:

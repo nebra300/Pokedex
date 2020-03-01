@@ -15,15 +15,11 @@ import Home from './components/pages/Home';
 import './App.css';
 
 function App() {
-  const pokemonLength = useSelector(state => Object.keys(state.pokedex.pokemon).length);
+  const pokemonLength = useSelector(state => state.pokedex.pokemonKeys.length);
   const loading = useSelector(state => state.pokedex.loading);
   const url = useSelector(state => state.pokedex.url);
   const dispatch = useDispatch();
 
-  console.log({
-    pokemonLength,
-    loading,
-  });
 
   useEffect(()=>{
     if(pokemonLength===0 && loading===false){
