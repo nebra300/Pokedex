@@ -50,6 +50,8 @@ function PokemonDetails(props) {
         }
     }, [pokemon, dispatch])
 
+    //#region scheck objects
+    if(!pokemon) return null;
     if(!pokemon.details) return null;
     if(pokemon.details.loading===true){
         return(
@@ -70,7 +72,9 @@ function PokemonDetails(props) {
         )
     }
     if(!pokemon.species.info) return null;
-    
+    //#endregion
+
+
     return (
         <div className="container" >
             <div className="row">
