@@ -26,6 +26,9 @@ export default {
         lineHeight: "1.42857",
         marginTop: "40px",
         marginBottom: "0px"
+    },
+    favoriteContainer: {
+        position: 'absolute',
+        left: '30'
     }
-    
 }

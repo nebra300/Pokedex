@@ -8,6 +8,8 @@ import PokemonTypes from '../partialViews/PokemonTypes';
 import PokemonAbilities from '../partialViews/PokemonAbilities';
 import PokedexEntries from '../partialViews/PokedexEntries';
 import PokemonStats from '../partialViews/PokemonStats';
+import PokemonMoves from '../partialViews/PokemonMoves';
+
 
 const fetchPokemonDetails = (pokemon, dispatch)=>{
     if(!pokemon.details.info && pokemon.details.loading===false){
@@ -39,6 +41,8 @@ const fetchPokemonSpecies = (pokemon, dispatch) => {
 function PokemonDetails(props) {
     const pokemon = useSelector(state => state.pokedex.pokemon[props.match.params.name]);
     const dispatch = useDispatch();
+
+    console.log(pokemon);
 
     useEffect(()=>{
         if(pokemon){
@@ -94,6 +98,11 @@ function PokemonDetails(props) {
                 </div>
                 <div className="col">
                     <PokemonStats pokemonStats={pokemon.details.info.stats} />
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    <PokemonMoves pokemonMoves={pokemon.details.info.moves} />
                 </div>
             </div>
         </div>

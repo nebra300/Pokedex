@@ -2,13 +2,14 @@ import React from 'react';
 import { HorizontalBar } from 'react-chartjs-2'; 
 
 import style from '../../style';
+import { capitalize } from '../../customLibs/stringOperations'
 
 
 function PokemonStats(props) {
     const pokemonStats = props.pokemonStats;
 
     const chartData = {
-        labels: pokemonStats.map(stat=>stat.stat.name),
+        labels: pokemonStats.map(stat=>capitalize(stat.stat.name.replace("-", " "))),
         datasets: [
             {
                 backgroundColor: "rgba(233,84,32,0.8)",
