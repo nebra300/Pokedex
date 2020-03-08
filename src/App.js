@@ -50,7 +50,7 @@ function App() {
             timeout: location.state ? location.state.duration ? location.state.duration : 0 : 0
           }
         )}>
-          <CSSTransition key={location.key}>
+          <CSSTransition key={location.key} timeout={0}>
             <div className="page">
               <Switch location={location}>
                 <Route exact path="/home" component={Home} />

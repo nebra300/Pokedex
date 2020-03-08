@@ -1,23 +1,9 @@
 import React from 'react';
 
 import Hero from './Hero';
-import { useHistory } from "react-router-dom";
 import TransitionLink from '../partialViews/TransitionLink'
 
 function Home() {
-    var history = useHistory()
-
-    function handleClick() {
-      history.replace(history.location.pathname, {
-        transition: "fade",
-        duration: 500
-      });
-      history.push("/pokedex", {
-        transition: "slide",
-        duration: 1200
-      });
-    }
-
     const style={
       btn: {
         position: "fixed",
