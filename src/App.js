@@ -14,7 +14,7 @@ import Navbar from './components/partialViews/Navbar';
 import Pokedex from './components/pokedex/Pokedex';
 import PokemonDetails from './components/pokemonDetails/PokemonDetails';
 import Home from './components/home/Home';
-import ScrollToTop from './components/partialViews/ScrollToTop';
+
 
 function App() {
   const pokemonLength = useSelector(state => state.pokedex.pokemonKeys.length);

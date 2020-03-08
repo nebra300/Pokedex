@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchPokemonDetails } from '../pokemonDetails/PokemonDetails';
 import altImg from '../../images/pokeball.jpg';
-
 import { capitalize } from '../../customLibs/customLibs';
+import PropTypes from 'prop-types';
 
 
 function PokemonThumbnail(props) {
@@ -37,6 +37,10 @@ function PokemonThumbnail(props) {
 
 
     return null;
+}
+
+PokemonThumbnail.propTypes = {
+    pokemonName: PropTypes.string.isRequired
 }
 
 

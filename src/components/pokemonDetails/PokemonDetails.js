@@ -11,6 +11,7 @@ import PokemonStats from './PokemonStats';
 import PokemonMoves from './PokemonMoves';
 import PokemonDetailsHeader from './PokemonDetailsHeader';
 
+
 const fetchPokemonDetails = (pokemon, dispatch)=>{
     if(!pokemon.details.info && pokemon.details.loading===false){
         dispatch({ type: FETCH_POKEMON_DETAILS, payload: {name: pokemon.name}});

@@ -92,3 +92,47 @@
   opacity: 0;
   transition: all 300ms ease-in-out;
 }
+
+/* SLIDE RIGHT ANIMATION */
+
+.slideRight-appear, 
+.slideRight-enter {
+  transform: translateX(250%);
+}
+
+.slideRight-appear-active,
+.slideRight-enter.slideRight-enter-active {
+  transform: translateX(0);
+  transition: all 1000ms ease-out;
+}
+
+.slideRight-exit {
+  transform: translateX(0);
+}
+
+.slideRight-exit.slideRight-exit-active {
+  transform: translateX(-250%);
+  transition: all 1200ms ease-in;
+}
+
+/* SLIDE LEFT ANIMATION */
+
+.slideLeft-appear, 
+.slideLeft-enter {
+  transform: translateX(-250%);
+}
+
+.slideLeft-appear-active,
+.slideLeft-enter.slideLeft-enter-active {
+  transform: translateX(0);
+  transition: all 1000ms ease-out;
+}
+
+.slideLeft-exit {
+  transform: translateX(0);
+}
+
+.slideLeft-exit.slideLeft-exit-active {
+  transform: translateX(250%);
+  transition: all 1200ms ease-in;
+}

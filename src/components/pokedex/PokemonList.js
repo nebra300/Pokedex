@@ -1,6 +1,8 @@
 import React from 'react'
 import PokemonThumbnail from './PokemonThumbnail';
 import TransitionLink from '../partialViews/TransitionLink';
+import PropTypes from 'prop-types';
+ 
 
 function PokemonList(props) {
     return(
@@ -26,6 +28,10 @@ function PokemonList(props) {
             </div>
         </>
     );
+}
+
+PokemonList.propTypes = {
+    pokemon: PropTypes.array.isRequired
 }
 
 export default PokemonList;
