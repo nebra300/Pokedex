@@ -42,8 +42,6 @@ function PokemonDetails(props) {
     const pokemon = useSelector(state => state.pokedex.pokemon[props.match.params.name]);
     const dispatch = useDispatch();
 
-    console.log(pokemon);
-
     useEffect(()=>{
         if(pokemon){
             fetchPokemonDetails(pokemon, dispatch);
@@ -53,6 +51,7 @@ function PokemonDetails(props) {
             }
         }
     }, [pokemon, dispatch])
+
 
     //#region check objects
     if(!pokemon) return null;
@@ -66,7 +65,6 @@ function PokemonDetails(props) {
     if(!pokemon.species.info) return null;
     //#endregion
 
-    console.log(props.location);
 
     return (
         <div className="container" >

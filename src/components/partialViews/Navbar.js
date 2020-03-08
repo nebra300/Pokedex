@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import logo from '../../images/International_Pokémon_logo.svg';
-
+import TransitionLink from './TransitionLink';
 
 export default function Navbar() {
     const style={
@@ -11,25 +11,45 @@ export default function Navbar() {
         }
     }
 
-
     return (
         <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
         <div className="container">
-            <Link to="/home" className="navbar-brand">
+            <TransitionLink
+                pathname="/home"
+                transition="fade"
+                previousTransition="fade"
+                duration={300}
+                previousDuration={500}
+                className="navbar-brand"            
+            >
                 <img src={logo} alt="#" style={style.logoStyle} />
-            </Link>
+            </TransitionLink>
 
             <ul className="nav navbar-nav pull-xs-right">
                 <li className="nav-item">
-                    <Link to="/home" className="nav-link">
+                    <TransitionLink
+                        pathname="/home"
+                        transition="fade"
+                        previousTransition="fade"
+                        duration={300}
+                        previousDuration={500}
+                        className="nav-link"
+                    >
                         <h3>Home</h3>
-                    </Link>
+                    </TransitionLink>
                 </li>
 
                 <li className="nav-item">
-                    <Link to="/pokedex" className="nav-link">
+                    <TransitionLink
+                        pathname="/pokedex"
+                        transition="fade"
+                        previousTransition="fade"
+                        duration={300}
+                        previousDuration={500}
+                        className="nav-link"
+                    >
                         <h3>Pokedex</h3>
-                    </Link>
+                    </TransitionLink>
                 </li>
             </ul>
         </div>

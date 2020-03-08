@@ -52,7 +52,6 @@ function App() {
         )}>
           <CSSTransition key={location.key}>
             <div className="page">
-              <ScrollToTop />
               <Switch location={location}>
                 <Route exact path="/home" component={Home} />
                 <Route exact path="/pokedex" component={Pokedex} />
