@@ -1,6 +1,7 @@
 import React from 'react'
 
-function Favorites() {
+
+function PokemonEvolutionChain(props) {
     return (
         <div>
             
@@ -8,5 +9,4 @@ function Favorites() {
     )
 }
 
-
-export default Favorites;
+export default PokemonEvolutionChain

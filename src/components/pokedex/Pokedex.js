@@ -1,17 +1,8 @@
 import React from 'react';
-import PokemonList from '../partialViews/PokemonList';
+import PokemonList from './PokemonList';
 import {useEffect, useState} from 'react';
 import { useSelector } from 'react-redux';
 
-const style = {
-    containerStyle:{
-        textAlign: "center",
-    },
-    combo: {
-        textAlign: "center",
-        width: "15%"
-    }
-}
 
 function Pokedex() {
     const pokemon = useSelector(state => state.pokedex.pokemonKeys);
@@ -86,28 +77,30 @@ function Pokedex() {
     }
 
     return(
-        <div className="container" style={style.containerStyle}>
+        <div className="container">
+            <div className="pokedex">
             <h1>POKEDEX</h1>
-            <form className="form">
-                <select onChange={(e)=>handleComboChange(e)} style={style.combo} className="form-control">
-                    <option value="National">National</option>
-                    <option value="Kanto">Kanto</option>
-                    <option value="Johto">Johto</option>
-                    <option value="Hoenn">Hoenn</option>
-                    <option value="Sinnoh">Sinnoh</option>
-                    <option value="Unova">Unova</option>
-                    <option value="Kalos">Kalos</option>
-                </select>
-                <input 
-                    type="text"
-                    id="PokeSearch"
-                    className="form-control flex-grow-1 text-center"
-                    placeholder="Search"
-                    onChange={(e)=>handleSearchChange(e)}
-                    autoComplete="off"
-                />  
-            </form>
-            <PokemonList pokemon={pokemonList.slice(0, num)}/>
+                <form className="form form-inline">
+                    <input 
+                        type="text"
+                        id="PokeSearch"
+                        className="form-control flex-grow-1 text-center"
+                        placeholder="Search"
+                        onChange={(e)=>handleSearchChange(e)}
+                        autoComplete="off"
+                    />
+                    <select onChange={(e)=>handleComboChange(e)} className="form-control">
+                        <option value="National">National</option>
+                        <option value="Kanto">Kanto</option>
+                        <option value="Johto">Johto</option>
+                        <option value="Hoenn">Hoenn</option>
+                        <option value="Sinnoh">Sinnoh</option>
+                        <option value="Unova">Unova</option>
+                        <option value="Kalos">Kalos</option>
+                    </select>
+                </form>
+                <PokemonList pokemon={pokemonList.slice(0, num)}/>
+            </div>
         </div>
     )
 }

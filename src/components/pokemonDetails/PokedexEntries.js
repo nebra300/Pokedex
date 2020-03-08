@@ -1,12 +1,18 @@
 import React from 'react';
-import style from '../../style.js';
 import {useState} from 'react';
 import { Transition } from "react-transition-group";
-import {capitalize} from '../../customLibs/stringOperations'
+import {capitalize} from '../../customLibs/customLibs'
 
 
 const localStyle = {
     containerDefaultStyle: {
+        paddingTop: "30px",
+        textAlign: "center",
+        backgroundColor: "#eeeeee",
+        margin: "2%",
+        padding: "5%",
+        border: "2px solid #E95420",
+        minWidth: "250px",
         transition: `height 300ms ease-in-out`,
         height: 350
     },
@@ -53,7 +59,6 @@ function PokedexEntries(props) {
     const [showPokedexEntries, setShowPokedexEntries] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
 
-
     function HeaderRow(){
         return (
             <>
@@ -76,8 +81,7 @@ function PokedexEntries(props) {
             <div className="row">
                 <div className="col">
                     <button
-                        className="btn btn-primary"
-                        style={style.btnCircle} 
+                        className="btn btn-primary btnCircle"
                         onClick={()=>{
                             if(isOpen===false){
                                 setIsOpen(true)
@@ -101,8 +105,7 @@ function PokedexEntries(props) {
             onEntered={()=>setShowPokedexEntries(true)}
         >
             { state=> (
-                <div style={{
-                    ...style.containerStyle,
+                <div className="myCard" style={{
                     ...localStyle.containerDefaultStyle,
                     ...localStyle.containerTransitionStyles[state]
                 }}>            
@@ -126,7 +129,7 @@ function PokedexEntries(props) {
                                 }}>
                                     <div className="col">
                                         {pokedexEntries.map(entry=>
-                                            <div key={entry.version.name} style={style.containerStyle}>
+                                            <div key={entry.version.name} className="myCard">
                                                 <h5>{capitalize(entry.version.name.replace("-", " "))}:</h5>
                                                 <h6>{entry.flavor_text}</h6>
                                             </div>

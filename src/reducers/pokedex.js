@@ -6,8 +6,11 @@ import {
     FETCH_POKEMON_DETAILS_SUCCESS,
     FETCH_POKEMON_SPECIES,
     FETCH_POKEMON_SPECIES_SUCCESS,
-
+    FETCH_EVOLUTION_CHAIN,
+    FETCH_EVOLUTION_CHAIN_SUCCESS
 } from '../actions/actionTypes';
+
+import {arrayToObject} from '../customLibs/customLibs'
 
 const initialState = {
     url: 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=964',
@@ -17,16 +20,7 @@ const initialState = {
     error: ''
 }
 
-const arrayToObject = (array, keyField) =>
-   array.reduce((obj, item) => {
-     obj[item[keyField]] = item
-     return obj
-   }, {})
 
-const capitalize = (s) => {
-    if (typeof s !== 'string') return ''
-    return s.charAt(0).toUpperCase() + s.slice(1)
-}
 
 export default function(state = initialState, action){
     switch(action.type){
@@ -43,7 +37,7 @@ export default function(state = initialState, action){
                     ...state.pokemon,
                     ...arrayToObject(action.payload.results.map(poke=>{
                         return {
-                            name: capitalize(poke.name),
+                            name: poke.name,
                             details: {
                                 loading: false,
                                 url: poke.url
@@ -54,7 +48,7 @@ export default function(state = initialState, action){
                 },
                 pokemonKeys: [
                     ...state.pokemonKeys,
-                    ...action.payload.results.map(poke=>capitalize(poke.name))
+                    ...action.payload.results.map(poke=>poke.name)
                 ]
             };
         case FETCH_POKEMON_ERROR:
@@ -119,6 +113,33 @@ export default function(state = initialState, action){
                         ...state.pokemon[action.payload.name],
                         species: {
                             ...state.pokemon[action.payload.name].species,
+                            loading: false,
+                            info: action.payload.info
+                        }
+                    }
+                }
+            }
+        case FETCH_EVOLUTION_CHAIN:
+            return {
+                ...state,
+                pokemon: {
+                    ...state.pokemon,
+                    [action.payload.name]: {
+                        ...state.pokemon[action.payload.name],
+                        evolution_chain: {
+                            loading: true
+                        }
+                    }
+                }
+            }
+        case FETCH_EVOLUTION_CHAIN_SUCCESS:
+            return {
+                ...state,
+                pokemon: {
+                    ...state.pokemon,
+                    [action.payload.name]: {
+                        ...state.pokemon[action.payload.name],
+                        evolution_chain: {
                             loading: false,
                             info: action.payload.info
                         }

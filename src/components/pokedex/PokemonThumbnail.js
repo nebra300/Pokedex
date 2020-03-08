@@ -1,10 +1,11 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchPokemonDetails } from '../pages/PokemonDetails';
+import { fetchPokemonDetails } from '../pokemonDetails/PokemonDetails';
 import altImg from '../../images/pokeball.jpg';
 
-import style from '../../style';
+import { capitalize } from '../../customLibs/customLibs';
+
 
 function PokemonThumbnail(props) {
     const pokemon = useSelector(state => state.pokedex.pokemon[props.pokemonName])
@@ -17,7 +18,7 @@ function PokemonThumbnail(props) {
 
     if(pokemon.details.loading===true){
         return (
-            <div style={style.containerStyle}>
+            <div className="myCard">
                 {pokemon.details.loading===true ? <h5>Loading...</h5> : null}  
             </div>
         );
@@ -25,19 +26,17 @@ function PokemonThumbnail(props) {
 
     if(pokemon.details.info){
         return(
-            <div style={style.containerStyle}>
+            <div className="myCard">
                 {pokemon.details.info ? 
-                    <img alt={altImg} className="rounded-circle" style={style.imgStyle} src={pokemon.details.info.sprites.front_default} /> 
+                    <img alt={altImg} className="rounded-circle thumbnailImg" src={pokemon.details.info.sprites.front_default} /> 
                 : null}
-                <h2>{pokemon.name}</h2>
+                <h2>{capitalize(pokemon.name)}</h2>
             </div>
         )
     }
 
 
-    return (
-        <div style={style.containerStyle}></div>
-    )
+    return null;
 }
 
 

@@ -1,8 +1,7 @@
 import React from 'react';
 import { HorizontalBar } from 'react-chartjs-2'; 
 
-import style from '../../style';
-import { capitalize } from '../../customLibs/stringOperations'
+import { capitalize } from '../../customLibs/customLibs'
 
 
 function PokemonStats(props) {
@@ -48,7 +47,7 @@ function PokemonStats(props) {
     }
 
     return (
-        <div style={style.containerStyle}>
+        <div className="myCard">
             <HorizontalBar 
                 data={chartData}
                 options={chartOptions}

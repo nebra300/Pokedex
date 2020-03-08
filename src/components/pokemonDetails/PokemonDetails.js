@@ -3,13 +3,13 @@ import {useSelector, useDispatch} from 'react-redux';
 import {useEffect} from 'react';
 import axios from 'axios';
 import {FETCH_POKEMON_DETAILS, FETCH_POKEMON_DETAILS_SUCCESS, FETCH_POKEMON_SPECIES, FETCH_POKEMON_SPECIES_SUCCESS} from '../../actions/actionTypes';
-import PokemonThumbnail from '../partialViews/PokemonThumbnail';
-import PokemonTypes from '../partialViews/PokemonTypes';
-import PokemonAbilities from '../partialViews/PokemonAbilities';
-import PokedexEntries from '../partialViews/PokedexEntries';
-import PokemonStats from '../partialViews/PokemonStats';
-import PokemonMoves from '../partialViews/PokemonMoves';
 
+import PokemonTypes from './PokemonTypes';
+import PokemonAbilities from './PokemonAbilities';
+import PokedexEntries from './PokedexEntries';
+import PokemonStats from './PokemonStats';
+import PokemonMoves from './PokemonMoves';
+import PokemonDetailsHeader from './PokemonDetailsHeader';
 
 const fetchPokemonDetails = (pokemon, dispatch)=>{
     if(!pokemon.details.info && pokemon.details.loading===false){
@@ -54,36 +54,25 @@ function PokemonDetails(props) {
         }
     }, [pokemon, dispatch])
 
-    //#region scheck objects
+    //#region check objects
     if(!pokemon) return null;
     if(!pokemon.details) return null;
-    if(pokemon.details.loading===true){
-        return(
-            <div>
-                <h2>Loading...</h2>
-            </div>
-        )
-    }
+    if(pokemon.details.loading===true) return null;
     if(!pokemon.details.info) return null;
 
 
     if(!pokemon.species) return null;
-    if(pokemon.species.loading===true){
-        return(
-            <div>
-                <h2>Loading...</h2>
-            </div>
-        )
-    }
+    if(pokemon.species.loading===true) return null;
     if(!pokemon.species.info) return null;
     //#endregion
 
+    console.log(props.location);
 
     return (
         <div className="container" >
             <div className="row">
                 <div className="col">
-                    <PokemonThumbnail pokemonName={pokemon.name} />
+                    <PokemonDetailsHeader pokemonName={pokemon.name} />
                 </div>
             </div>
             <div className="row">

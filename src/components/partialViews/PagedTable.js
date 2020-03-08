@@ -94,7 +94,7 @@ function PagedTable(props) {
 
     return (
         <div>
-            <table style={{textAlign: 'left'}} className="table table-striped">
+            <table style={{textAlign: 'center'}} className="table table-striped table-bordered">
                 <Header />
                 <Body />
             </table>

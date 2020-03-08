@@ -1,0 +1,94 @@
+.myCard {
+  padding-top: 30px;
+  text-align: center;
+  background-color: #eeeeee;
+  margin: 2%;
+  padding: 5%;
+  border: 2px solid #E95420;
+  min-width: 250px;
+}
+
+.pokedex {
+  padding-top: 30px;
+  text-align: center;
+  margin: 2%;
+  min-width: 250px;
+}
+
+.thumbnailImg {
+  background-color: #ffffff;
+  height: 150px;
+  width: 150px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 5px solid #E95420;
+}
+
+/* Pokedex Entries */
+
+.btnCircle {
+  width: 50px;
+  height: 50px;
+  padding: 6px 0px;
+  border-radius: 30px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.42857;
+  margin-top: 40px;
+  margin-bottom: 0px;
+}
+
+/* ANIMATIONS FML */
+
+/* ALL PAGES MUST HAVE ABSOLUTE POSITIONING FOR TRANSITIONS BETWEEN THEM TO BE SMOOTH */
+.page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  padding-top: 100px
+}
+
+/* SLIDE ANIMATION */
+
+.slide-appear, 
+.slide-enter {
+  transform: translateY(250%);
+}
+
+.slide-appear-active,
+.slide-enter.slide-enter-active {
+  transform: translateY(0);
+  transition: all 1000ms ease-out;
+}
+
+.slide-exit {
+  transform: translateY(0);
+}
+
+.slide-exit.slide-exit-active {
+  transform: translateY(-250%);
+  transition: all 1200ms ease-in;
+}
+
+/* FADE ANIMATION */
+
+.fade-appear, 
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-appear-active,
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: all 500ms ease-in-out;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit.fade-exit-active {
+  opacity: 0;
+  transition: all 300ms ease-in-out;
+}

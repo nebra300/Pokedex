@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
 
-import style from '../../style.js';
+import PagedTable from '../partialViews/PagedTable'
 
-import PagedTable from './PagedTable.js'
-
-import { capitalize } from '../../customLibs/stringOperations'
+import { capitalize } from '../../customLibs/customLibs'
 
 
 function PokemonMoves(props) {
@@ -17,15 +15,21 @@ function PokemonMoves(props) {
     const [tableData, setTableData] = useState([]);
 
 
-    useEffect(() => {
-        var x = 0;
-
+    //returns version specific data
+    const filterVersionSpecificData = (moves, version)=>{
         const versionSpecificData = [].concat.apply([], moves.map(item=>
             item.version_group_details.map(v=>
                 v.version_group.name===version ? {name: item.move.name, ...v} : null
             ).filter(fil=>fil!==null)
         ).filter(fil2=>fil2.length!==0)).filter((v, i, a) => a.indexOf(v) === i);
 
+        return versionSpecificData;
+    }
+
+    useEffect(() => {
+        const versionSpecificData = filterVersionSpecificData(moves, version);
+
+        var x = 0; //fake id for dem react keys
         const dataForTable = versionSpecificData.map(item=>{
             x++;
             return {
@@ -46,10 +50,10 @@ function PokemonMoves(props) {
     }
 
     return (
-        <div style={style.containerStyle}>
+        <div className="myCard" style={{height: "500px"}}>
             <h3>Moves</h3>
             <form className="form">
-                <select onChange={(e)=>handleComboChange(e)} style={style.combo} className="form-control">
+                <select onChange={(e)=>handleComboChange(e)} className="form-control">
                     {versions.map(ver=>{
                         return(
                             <option key={ver} value={ver}>{ver.replace(/-/g, " ")}</option>
