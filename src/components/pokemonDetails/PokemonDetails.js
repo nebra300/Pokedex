@@ -2,7 +2,13 @@ import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {useEffect} from 'react';
 import axios from 'axios';
-import {FETCH_POKEMON_DETAILS, FETCH_POKEMON_DETAILS_SUCCESS, FETCH_POKEMON_SPECIES, FETCH_POKEMON_SPECIES_SUCCESS} from '../../actions/actionTypes';
+import {
+        FETCH_POKEMON_DETAILS, 
+        FETCH_POKEMON_DETAILS_SUCCESS, 
+        FETCH_POKEMON_SPECIES, 
+        FETCH_POKEMON_SPECIES_SUCCESS
+    } 
+from '../../actions/actionTypes';
 
 import PokemonTypes from './PokemonTypes';
 import PokemonAbilities from './PokemonAbilities';
@@ -68,29 +74,31 @@ function PokemonDetails(props) {
 
 
     return (
-        <div className="container" >
-            <div className="row">
-                <div className="col">
-                    <PokemonDetailsHeader pokemonName={pokemon.name} />
+        <div className="page">
+            <div className="container" >
+                <div className="row">
+                    <div className="col">
+                        <PokemonDetailsHeader pokemonName={pokemon.name} />
+                    </div>
                 </div>
-            </div>
-            <div className="row">
-                <div className="col">
-                    <PokedexEntries pokemonSpecies={pokemon.species}/>
+                <div className="row">
+                    <div className="col">
+                        <PokedexEntries pokemonSpecies={pokemon.species}/>
+                    </div>
                 </div>
-            </div>
-            <div className="row">
-                <div className="col">
-                    <PokemonTypes pokemonTypes={pokemon.details.info.types} />
-                    <PokemonAbilities pokemonAbilities={pokemon.details.info.abilities} />
+                <div className="row">
+                    <div className="col">
+                        <PokemonTypes pokemonTypes={pokemon.details.info.types} />
+                        <PokemonAbilities pokemonAbilities={pokemon.details.info.abilities} />
+                    </div>
+                    <div className="col">
+                        <PokemonStats pokemonStats={pokemon.details.info.stats} />
+                    </div>
                 </div>
-                <div className="col">
-                    <PokemonStats pokemonStats={pokemon.details.info.stats} />
-                </div>
-            </div>
-            <div className="row">
-                <div className="col">
-                    <PokemonMoves pokemonMoves={pokemon.details.info.moves} />
+                <div className="row">
+                    <div className="col">
+                        <PokemonMoves pokemonMoves={pokemon.details.info.moves} />
+                    </div>
                 </div>
             </div>
         </div>

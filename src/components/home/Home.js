@@ -18,7 +18,7 @@ function Home() {
     }
 
     return (
-      <>
+      <div className="page">
         <Hero/>
         <div>
           <TransitionLink
@@ -33,7 +33,7 @@ function Home() {
             <h4>Get Started With Pokedex</h4>
           </TransitionLink>
         </div>
-      </>
+      </div>
     )
 }
 

@@ -69,37 +69,40 @@ function Pokedex() {
         setPokedex(e.target.value);
     }
     const handleScroll = (e) => {
-        const el = e.target.documentElement;
-        const bottom = el.scrollHeight - el.scrollTop === el.clientHeight;
+        const el = e.target;
+        const bottom = el.clientHeight + el.scrollTop > el.scrollHeight-15
         if (bottom) {
             setNum(num+20);
         }
+        console.log(el)
     }
 
     return(
-        <div className="container">
-            <div className="pokedex">
-            <h1>POKEDEX</h1>
-                <form className="form form-inline">
-                    <input 
-                        type="text"
-                        id="PokeSearch"
-                        className="form-control flex-grow-1 text-center"
-                        placeholder="Search"
-                        onChange={(e)=>handleSearchChange(e)}
-                        autoComplete="off"
-                    />
-                    <select onChange={(e)=>handleComboChange(e)} className="form-control">
-                        <option value="National">National</option>
-                        <option value="Kanto">Kanto</option>
-                        <option value="Johto">Johto</option>
-                        <option value="Hoenn">Hoenn</option>
-                        <option value="Sinnoh">Sinnoh</option>
-                        <option value="Unova">Unova</option>
-                        <option value="Kalos">Kalos</option>
-                    </select>
-                </form>
-                <PokemonList pokemon={pokemonList.slice(0, num)}/>
+        <div onScroll={(e)=>handleScroll(e)} className="page">
+            <div className="container">
+                <div className="pokedex">
+                <h1>POKEDEX</h1>
+                    <form className="form form-inline">
+                        <input 
+                            type="text"
+                            id="PokeSearch"
+                            className="form-control flex-grow-1 text-center"
+                            placeholder="Search"
+                            onChange={(e)=>handleSearchChange(e)}
+                            autoComplete="off"
+                        />
+                        <select onChange={(e)=>handleComboChange(e)} className="form-control">
+                            <option value="National">National</option>
+                            <option value="Kanto">Kanto</option>
+                            <option value="Johto">Johto</option>
+                            <option value="Hoenn">Hoenn</option>
+                            <option value="Sinnoh">Sinnoh</option>
+                            <option value="Unova">Unova</option>
+                            <option value="Kalos">Kalos</option>
+                        </select>
+                    </form>
+                    <PokemonList pokemon={pokemonList.slice(0, num)}/>
+                </div>
             </div>
         </div>
     )

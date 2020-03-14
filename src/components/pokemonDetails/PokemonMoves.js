@@ -50,7 +50,7 @@ function PokemonMoves(props) {
     }
 
     return (
-        <div className="myCard" style={{height: "500px"}}>
+        <div className="myCard" style={{minHeight: "550px"}}>
             <h3>Moves</h3>
             <form className="form">
                 <select onChange={(e)=>handleComboChange(e)} className="form-control">

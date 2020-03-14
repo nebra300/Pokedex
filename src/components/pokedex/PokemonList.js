@@ -16,8 +16,8 @@ function PokemonList(props) {
                                     pathname={"/pokemon/".concat(pokemonName)} 
                                     transition={"fade"}
                                     previousTransition={"fade"}
-                                    duration={300}
-                                    previousDuration={500}
+                                    duration={500}
+                                    previousDuration={300}
                                 >
                                     <PokemonThumbnail pokemonName={pokemonName}/>
                                 </TransitionLink>

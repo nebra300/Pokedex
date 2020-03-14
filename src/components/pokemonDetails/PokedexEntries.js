@@ -5,27 +5,11 @@ import {capitalize} from '../../customLibs/customLibs'
 
 
 const localStyle = {
-    containerDefaultStyle: {
-        paddingTop: "30px",
-        textAlign: "center",
-        backgroundColor: "#eeeeee",
-        margin: "2%",
-        padding: "5%",
-        border: "2px solid #E95420",
-        minWidth: "250px",
-        transition: `height 300ms ease-in-out`,
-        height: 350
-    },
-    containerTransitionStyles: {
-        entering: { height: 1050 },
-        entered:  { height: 1050 },
-        exiting:  { height: 350 },
-        exited:  { height: 350  }
-    },
     contentDefaultStyle: {
-        transition: `all 300ms ease-in-out`,
+        transition: `all 350ms ease-in-out`,
         opacity: 0,
-        height: 0
+        height: 0,
+        textAlign: "center"
     },
     contentTransitionStyles: {
         entering: { 
@@ -57,7 +41,6 @@ function PokedexEntries(props) {
     const pokedexEntries = pokemonSpecies.info.flavor_text_entries.filter(item=>item.language.name==="en");
 
     const [showPokedexEntries, setShowPokedexEntries] = useState(false);
-    const [isOpen, setIsOpen] = useState(false);
 
     function HeaderRow(){
         return (
@@ -83,12 +66,7 @@ function PokedexEntries(props) {
                     <button
                         className="btn btn-primary btnCircle"
                         onClick={()=>{
-                            if(isOpen===false){
-                                setIsOpen(true)
-                            }
-                            else{
-                                setShowPokedexEntries(false)
-                            }                                
+                            setShowPokedexEntries(!showPokedexEntries)                              
                         }}
                     >
                     </button>
@@ -99,49 +77,38 @@ function PokedexEntries(props) {
 
     
     return (
-        <Transition
-            in={isOpen}
-            timeout={300}
-            onEntered={()=>setShowPokedexEntries(true)}
-        >
-            { state=> (
-                <div className="myCard" style={{
-                    ...localStyle.containerDefaultStyle,
-                    ...localStyle.containerTransitionStyles[state]
-                }}>            
-                    <div className="container">
+        <div className="myCard">
+            <div className="container">
 
-                        <HeaderRow />
+                <HeaderRow />
 
-                        <ButtonRow />
-                        
-                        <hr/>
+                <ButtonRow />
 
-                        <Transition
-                            in={showPokedexEntries}
-                            timeout={300}
-                            onExited={()=>setIsOpen(false)}
-                        >
-                            {state=>(
-                                <div className="row" style={{
-                                    ...localStyle.contentDefaultStyle,
-                                    ...localStyle.contentTransitionStyles[state]
-                                }}>
-                                    <div className="col">
-                                        {pokedexEntries.map(entry=>
-                                            <div key={entry.version.name} className="myCard">
-                                                <h5>{capitalize(entry.version.name.replace("-", " "))}:</h5>
-                                                <h6>{entry.flavor_text}</h6>
-                                            </div>
-                                        )}
+                <hr/>
+
+                <Transition
+                    in={showPokedexEntries}
+                    timeout={300}
+                >
+                    {state=>(
+                        <div className="row" style={{
+                            ...localStyle.contentDefaultStyle,
+                            ...localStyle.contentTransitionStyles[state]
+                        }}>
+                            <div className="col">
+                                {pokedexEntries.map(entry=>
+                                    <div key={entry.version.name} className="myCard">
+                                        <h5>{capitalize(entry.version.name.replace("-", " "))}:</h5>
+                                        <h6>{entry.flavor_text}</h6>
                                     </div>
-                                </div>
-                            )}
-                        </Transition>
-                    </div>
-                </div>
-            )}
-            </Transition>
+                                )}
+                            </div>
+                        </div>
+                    )}
+                </Transition>
+
+            </div>
+        </div>               
     )
 }
 

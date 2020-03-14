@@ -38,7 +38,6 @@ function App() {
   
   if(pokemonLength===0) return null;
 
-
   return (
     <div className="App">
       <Navbar/>
@@ -51,14 +50,12 @@ function App() {
           }
         )}>
           <CSSTransition key={location.key} timeout={0}>
-            <div className="page">
               <Switch location={location}>
                 <Route exact path="/home" component={Home} />
                 <Route exact path="/pokedex" component={Pokedex} />
                 <Route exact path="/pokemon/:name" component={PokemonDetails} />
                 <Redirect from='/' to='/home' />
               </Switch>
-            </div>
           </CSSTransition> 
         </TransitionGroup>
       )} />
