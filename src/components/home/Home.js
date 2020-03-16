@@ -18,7 +18,7 @@ function Home() {
     }
 
     return (
-      <div className="page">
+      <div className="homePage">
         <Hero/>
         <div>
           <TransitionLink

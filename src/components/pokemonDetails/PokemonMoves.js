@@ -26,6 +26,7 @@ function PokemonMoves(props) {
         return versionSpecificData;
     }
 
+    //effect prepares and sets data for table
     useEffect(() => {
         const versionSpecificData = filterVersionSpecificData(moves, version);
 

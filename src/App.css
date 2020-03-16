@@ -2,6 +2,63 @@ body {
   overflow: hidden;
 }
 
+
+/* PAGES */
+/* ALL PAGES MUST HAVE ABSOLUTE POSITIONING FOR TRANSITIONS BETWEEN THEM TO BE SMOOTH */
+.transPage {  /* CONTAINER FOR ALL PAGES (WRAPPS EVERYTHING EXEPT NAVBAR) (ROUTE TRANSITIONS WILL BE APPLIED ON THIS CLASS) */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* HOME PAGE */
+.homePage {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding-top: 100px;
+  overflow-y: hidden;
+}
+
+/* POKEDEX PAGE */
+.pokedexPage {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding-top: 100px;
+  overflow-y: auto;
+}
+
+.pokedexContent {
+  padding-top: 30px;
+  text-align: center;
+  margin: 2%;
+  min-width: 250px;
+}
+
+/* POKEMON DETAILS PAGE */
+.pokemonDetailsPage {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding-top: 100px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+  /* hiding the scrollbar but maintaining the ability to scroll */
+.pokemonDetailsPage {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+.pokemonDetailsPage::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+
+
+
+/* PARTIAL VIEW CLASSES */
 .myCard {
   padding-top: 30px;
   text-align: center;
@@ -13,13 +70,6 @@ body {
   min-width: 200px;
 }
 
-.pokedex {
-  padding-top: 30px;
-  text-align: center;
-  margin: 2%;
-  min-width: 250px;
-}
-
 .thumbnailImg {
   background-color: #ffffff;
   height: 150px;
@@ -28,8 +78,6 @@ body {
   padding: 10px;
   border: 5px solid #E95420;
 }
-
-/* Pokedex Entries */
 
 .btnCircle {
   width: 50px;
@@ -43,18 +91,9 @@ body {
   margin-bottom: 0px;
 }
 
+
+
 /* ANIMATIONS FML */
-
-/* ALL PAGES MUST HAVE ABSOLUTE POSITIONING FOR TRANSITIONS BETWEEN THEM TO BE SMOOTH */
-.page {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  padding-top: 100px;
-  overflow-y: auto;
-}
-
 /* SLIDE ANIMATION */
 
 .slide-appear, 
@@ -109,7 +148,7 @@ body {
 .slideRight-appear-active,
 .slideRight-enter.slideRight-enter-active {
   transform: translateX(0);
-  transition: all 1000ms ease-out;
+  transition: all 800ms ease-out;
 }
 
 .slideRight-exit {
@@ -118,7 +157,7 @@ body {
 
 .slideRight-exit.slideRight-exit-active {
   transform: translateX(-250%);
-  transition: all 1200ms ease-in;
+  transition: all 1000ms ease-in;
 }
 
 /* SLIDE LEFT ANIMATION */
@@ -131,7 +170,7 @@ body {
 .slideLeft-appear-active,
 .slideLeft-enter.slideLeft-enter-active {
   transform: translateX(0);
-  transition: all 1000ms ease-out;
+  transition: all 800ms ease-out;
 }
 
 .slideLeft-exit {
@@ -140,5 +179,5 @@ body {
 
 .slideLeft-exit.slideLeft-exit-active {
   transform: translateX(250%);
-  transition: all 1200ms ease-in;
+  transition: all 1000ms ease-in;
 }

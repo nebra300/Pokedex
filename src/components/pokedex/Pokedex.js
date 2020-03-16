@@ -70,7 +70,7 @@ function Pokedex() {
     }
     const handleScroll = (e) => {
         const el = e.target;
-        const bottom = el.clientHeight + el.scrollTop > el.scrollHeight-15
+        const bottom = el.clientHeight + el.scrollTop > el.scrollHeight-100
         if (bottom) {
             setNum(num+20);
         }
@@ -78,9 +78,9 @@ function Pokedex() {
     }
 
     return(
-        <div onScroll={(e)=>handleScroll(e)} className="page">
+        <div onScroll={(e)=>handleScroll(e)} className="pokedexPage">
             <div className="container">
-                <div className="pokedex">
+                <div className="pokedexContent">
                 <h1>POKEDEX</h1>
                     <form className="form form-inline">
                         <input 

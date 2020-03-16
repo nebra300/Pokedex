@@ -16,6 +16,8 @@ import PokedexEntries from './PokedexEntries';
 import PokemonStats from './PokemonStats';
 import PokemonMoves from './PokemonMoves';
 import PokemonDetailsHeader from './PokemonDetailsHeader';
+import NextPokemonButton from './NextPokemonButton';
+import PreviousPokemonButton from './PreviousPokemonButton';
 
 
 const fetchPokemonDetails = (pokemon, dispatch)=>{
@@ -74,11 +76,13 @@ function PokemonDetails(props) {
 
 
     return (
-        <div className="page">
+        <div className="pokemonDetailsPage">
             <div className="container" >
                 <div className="row">
                     <div className="col">
                         <PokemonDetailsHeader pokemonName={pokemon.name} />
+                        <NextPokemonButton pokemonName={pokemon.name} className="btn btn-primary float-right"/>
+                        <PreviousPokemonButton pokemonName={pokemon.name} className="btn btn-primary float-left"/>
                     </div>
                 </div>
                 <div className="row">
@@ -104,6 +108,7 @@ function PokemonDetails(props) {
         </div>
     )
 }
+
 
 export default PokemonDetails;
 export {fetchPokemonDetails};
