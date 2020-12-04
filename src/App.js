@@ -31,7 +31,7 @@ function App() {
       axios.get(url).then(response => {
           dispatch({ type: FETCH_POKEMON_SUCCESS, payload: response.data});
         }).catch(error=>{
-          dispatch({ type: FETCH_POKEMON_ERROR, payload: error.message});
+          dispatch({ type: FETCH_POKEMON_ERROR, payload: error.msg});
       });
     }
   })
